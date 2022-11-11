@@ -1,32 +1,46 @@
 <template>
-  <div id="app">
-    <nav>
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </nav>
-    <router-view/>
+  <div class="home">
+    <!--  引用头部 -->
+    <Header />
+    <el-container class="content">
+      <!--  引用菜单 -->
+      <Menu />
+      <el-container>
+        <el-main>
+          <!-- 父组件一定要添加 router-view 路由跳转信息才能看见-->
+          <router-view/>
+        </el-main>
+        <el-footer>
+          <!--  引用底部 -->
+          <Footer />
+        </el-footer>
+      </el-container>
+    </el-container>
   </div>
 </template>
+<script>
+import Header from '@/comm/head.vue';
+import Footer from '@/comm/footer.vue';
+import Menu from '@/comm/menu.vue';
+export default {
+  components: {
+    Header,
+    Footer,
+    Menu
+  }
+}
+</script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+.home {
+  width: 100%;
+  height: 100%;
 }
 
-nav {
-  padding: 30px;
-}
-
-nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-nav a.router-link-exact-active {
-  color: #42b983;
+.content {
+  position: absolute;
+  width: 100%;
+  top: 60px;
+  bottom: 0;
 }
 </style>
